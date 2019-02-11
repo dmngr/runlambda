@@ -32,7 +32,7 @@ const args = minimist(process.argv.slice(2), {
  * @return {Promise}        resolves to the contents of the file(json parsed)
  */
 function read(name, format) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     fs.readFile(name, format, (err, data) => err ? reject(err) : resolve(JSON.parse(data.toString('utf-8'))));
   });
 }
@@ -45,7 +45,7 @@ function read(name, format) {
  * @return {Promise}
  */
 function write(path, contents) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     fs.writeFile(path, contents, 'utf-8', (err) => err ? reject(err) : resolve());
   });
 }
@@ -129,16 +129,17 @@ Promise.all([
       .then(() => lambda.invoke(params).promise())
       // write to outfile, log
       .then(res => {
-        // console.log('res:', res);
+        console.log('res:', res);
         console.log('StatusCode:', res.StatusCode);
 
         let Payload;
         try {
           Payload = JSON.parse(res.Payload);
         } catch (e) {
+          console.log("e", e);
           Payload = res.Payload;
         }
-
+        console.log("Payload.isBase64Encoded", Payload.isBase64Encoded);
         if ((Payload.isBase64Encoded || Payload['Content-Encoding'] === 'gzip') && Payload.body) return get_body(Payload);
         else return Payload;
       })

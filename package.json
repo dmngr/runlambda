@@ -1,6 +1,6 @@
 {
-  "name": "runlambda",
-  "version": "2.0.0",
+  "name": "@deliverymanager/runlambda",
+  "version": "2.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,9 +14,9 @@
     "runlambda": "./bin/index.js"
   },
   "dependencies": {
-    "aws-sdk": "2.186.0",
-    "colors": "1.2.4",
-    "lodash": "4.17.10",
+    "aws-sdk": "2.400.0",
+    "colors": "1.3.3",
+    "lodash": "4.17.11",
     "minimist": "^1.2.0"
   },
   "devDependencies": {
