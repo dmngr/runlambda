@@ -112,10 +112,11 @@ Promise.all([
                 } else return Promise.reject('Lambda alias does not exist, cannot run published version');
 
               } else {
+/*                
                 payloadFile.requestContext = {
                   stage: args.simver || 'dev'
                 };
-
+ */
                 console.log('\n' + colors.blue(`Simulating version:${payloadFile.requestContext.stage}`));
               }
 
