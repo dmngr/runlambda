@@ -86,7 +86,7 @@ Promise.all([
 
     params.FunctionName = package_json.name;
 
-    alias = package_json.lambdaAlias;
+    alias = package_json.lambdaAlias || "$LATEST";
     return getBranches()
       // read get payload
       .then(body => {
