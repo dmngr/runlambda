@@ -103,23 +103,6 @@ Promise.all([
           return read(args.payload, 'utf-8')
             .then(payloadFile => {
               if (args.name) payloadFile = payloadFile[args.name];
-
-              if (args.published) {
-                if (alias) {
-                  payloadFile.requestContext = {
-                    stage: alias
-                  };
-                } else return Promise.reject('Lambda alias does not exist, cannot run published version');
-
-              } else {
-/*                
-                payloadFile.requestContext = {
-                  stage: args.simver || 'dev'
-                };
- */
-                console.log('\n' + colors.blue(`Simulating version:${payloadFile.requestContext.stage}`));
-              }
-
               params.Payload = JSON.stringify(payloadFile);
               return Promise.resolve();
             });
