@@ -51,13 +51,13 @@ function write(path, contents) {
 }
 
 Promise.all([
-    read('package.json', 'utf-8'),
-    read(homedir + '/.uplambda.json', 'utf-8')
+  read('package.json', 'utf-8'),
+  read(homedir + '/.uplambda.json', 'utf-8')
     .catch(err => {
       if (err.code != 'ENOENT') return Promise.reject(err);
       else return Promise.reject(`Config file ${homedir}/.uplambda.json was not found. Run "uplambda --account --add" to init`);
     })
-  ])
+])
   .then(res => {
     const [package_json, config] = res;
 
@@ -78,6 +78,7 @@ Promise.all([
       aws_secret_access_key = tmp_accounts[0].aws_secret_access_key;
     }
 
+    console.log("account: ", account);
     const lambda = new AWS.Lambda({
       accessKeyId: aws_access_key_id,
       secretAccessKey: aws_secret_access_key,
