@@ -1,6 +1,9 @@
 {
   "name": "@deliverymanager/runlambda",
   "version": "2.3.2",
+  "publishConfig": {
+    "access": "restricted"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
